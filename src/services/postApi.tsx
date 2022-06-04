@@ -1,4 +1,5 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
+import { PAGE_SIZE } from "../constants";
 import { Post } from "../models/post.model";
 
 export const postsApi = createApi({
@@ -7,12 +8,10 @@ export const postsApi = createApi({
     baseUrl: "https://jsonplaceholder.typicode.com/",
   }),
   endpoints: (builder) => ({
-    posts: builder.query<{ apiResponse: Post[]; total: number }, void>({
-      query: () => "/posts?_page=1&_limit=50",
+    posts: builder.query<{ apiResponse: Post[]; total: number }, number>({
+      query: (pageNumber: number) =>
+        `/posts?_page=${pageNumber}&_limit=${PAGE_SIZE}`,
       transformResponse(apiResponse: Post[], meta) {
-        console.log({
-          totalElements: meta?.response?.headers.get("x-total-count"),
-        });
         return {
           apiResponse: apiResponse,
           total: parseInt(meta?.response?.headers.get("x-total-count") || ""),

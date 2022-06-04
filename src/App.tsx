@@ -1,18 +1,20 @@
-import React from "react";
-import logo from "./logo.svg";
-import { Counter } from "./features/counter/Counter";
-import { Card, Col, Layout, Pagination, Row, Space, Typography } from "antd";
-import { Button } from "antd";
-import "./App.css";
+import { Card, Col, Layout, Row, Typography } from "antd";
 import { usePostsQuery } from "./services/postApi";
-import { Post } from "./models/post.model";
+import { selectPagination } from "./features/pagination/paginationSlice";
+
+import "./App.css";
+import { useAppSelector } from "./app/hooks";
+import PaginationComponent from "./features/pagination/PaginationComponent";
 
 const PAGE_TITLE = "Post Cards App";
 
-const { Header, Footer, Sider, Content } = Layout;
+const { Header, Footer, Content } = Layout;
 const { Title } = Typography;
 function App() {
-  const { data, error, isLoading, isFetching, isSuccess } = usePostsQuery();
+  const page = useAppSelector(selectPagination);
+  console.log(page);
+  const { data, error, isLoading, isFetching, isSuccess, refetch } =
+    usePostsQuery(page);
 
   return (
     <>
@@ -26,22 +28,32 @@ function App() {
             <Row gutter={16}>
               {isSuccess &&
                 data.apiResponse.map((post) => (
-                  <Col xs={{ span: 5, offset: 1 }} lg={{ span: 6, offset: 2 }}>
+                  <Col
+                    key={post.id}
+                    xs={{ span: 5, offset: 1 }}
+                    lg={{ span: 6, offset: 2 }}
+                  >
                     <Card
-                      title={post.title}
+                      title={
+                        <Typography.Text style={{ whiteSpace: "break-spaces" }}>
+                          {post.title}
+                        </Typography.Text>
+                      }
                       style={{
                         width: 300,
-                        height: 300,
+                        height: 340,
                         marginBottom: "2rem",
                       }}
                     >
                       <p>{post.body}</p>
+                      <br />
+                      <p>id: {post.id}</p>
                     </Card>
                   </Col>
                 ))}
             </Row>
             <Row justify="center" align="top">
-              <Pagination defaultCurrent={1} total={3} />
+              <PaginationComponent total={data?.total} />
             </Row>
           </Content>
         </Layout>
