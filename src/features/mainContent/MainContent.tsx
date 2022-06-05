@@ -6,6 +6,8 @@ import { SerializedError } from "@reduxjs/toolkit";
 import { Response } from "../../models/redux.model";
 import FetchFailure from "../fetchFailure/FetchFailure";
 
+import styles from "./MainContent.module.css";
+
 interface MainContentArgs {
   isSuccess: boolean;
   error?: FetchBaseQueryError | SerializedError;
@@ -21,13 +23,7 @@ const MainContent = ({
 }: MainContentArgs) => {
   if (isLoading) {
     return (
-      <Row
-        justify="center"
-        align="middle"
-        style={{
-          flex: 1,
-        }}
-      >
+      <Row justify="center" align="middle" className={styles.spinContainer}>
         <Spin size="large" />
       </Row>
     );
@@ -48,15 +44,11 @@ const MainContent = ({
             >
               <Card
                 title={
-                  <Typography.Text style={{ whiteSpace: "break-spaces" }}>
+                  <Typography.Text className={styles.cardTitle}>
                     {title}
                   </Typography.Text>
                 }
-                style={{
-                  width: 300,
-                  height: 300,
-                  marginBottom: "2rem",
-                }}
+                className={styles.customCard}
               >
                 <p>{body}</p>
               </Card>

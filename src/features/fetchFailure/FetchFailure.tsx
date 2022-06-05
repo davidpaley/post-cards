@@ -2,7 +2,7 @@ import { Row } from "antd";
 import { FetchBaseQueryError } from "@reduxjs/toolkit/dist/query";
 import { SerializedError } from "@reduxjs/toolkit";
 import { WarningOutlined } from "@ant-design/icons";
-
+import styles from "./FetchFailure.module.css";
 interface FetchFailureArgs {
   error: FetchBaseQueryError | SerializedError;
   customMessage?: string;
@@ -15,23 +15,11 @@ const FetchFailure = ({ error, customMessage }: FetchFailureArgs) => {
   console.error(error);
   return (
     <>
-      <Row
-        justify="center"
-        align="middle"
-        style={{
-          flex: 1,
-        }}
-      >
-        <WarningOutlined size={10} style={{ fontSize: "15rem" }} />
+      <Row justify="center" align="middle" className={styles.iconContainer}>
+        <WarningOutlined size={10} className={styles.icon} />
       </Row>
       <br />
-      <Row
-        justify="center"
-        align="middle"
-        style={{
-          flex: 1,
-        }}
-      >
+      <Row justify="center" align="middle" className={styles.messageContainer}>
         <p>{customMessage || ERROR_MESSAGE}</p>
       </Row>
     </>

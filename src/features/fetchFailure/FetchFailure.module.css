@@ -1,0 +1,11 @@
+.iconContainer {
+  flex: 1;
+}
+
+.messageContainer {
+  flex: 1;
+}
+
+.icon {
+  font-size: 15rem;
+}
