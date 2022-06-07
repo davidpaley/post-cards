@@ -9,7 +9,7 @@ describe("counter reducer", () => {
   };
   it("should handle initial state", () => {
     expect(paginationReducer(undefined, { type: "unknown" })).toEqual({
-      value: 0,
+      value: 1,
     });
   });
 

@@ -15,6 +15,9 @@ interface MainContentArgs {
   data?: Response;
 }
 
+export const SPIN_TEST_ID = "spin";
+export const PAGINATION_TEST_ID = "pagination";
+
 const MainContent = ({
   isSuccess,
   data,
@@ -24,7 +27,7 @@ const MainContent = ({
   if (isLoading) {
     return (
       <Row justify="center" align="middle" className={styles.spinContainer}>
-        <Spin size="large" />
+        <Spin data-testid={SPIN_TEST_ID} size="large" />
       </Row>
     );
   }
@@ -55,7 +58,7 @@ const MainContent = ({
             </Col>
           ))}
       </Row>
-      <Row justify="center" align="top">
+      <Row data-testid={PAGINATION_TEST_ID} justify="center" align="top">
         <PaginationComponent total={data?.total} />
       </Row>
     </>
