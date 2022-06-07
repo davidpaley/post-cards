@@ -19,19 +19,8 @@ function App() {
       <Layout>
         <Header />
         <Layout>
-          <Content
-            style={{
-              overflow: "hidden",
-              minHeight: "90vh",
-              padding: "6.25rem 100px",
-              display: "flex",
-              flexDirection: "column",
-            }}
-          >
-            <Title
-              style={{ textAlign: "center", marginBottom: "3rem" }}
-              level={1}
-            >
+          <Content className="customContent">
+            <Title className="mainTitle" level={1}>
               {PAGE_TITLE}
             </Title>
             <MainContent
@@ -42,7 +31,7 @@ function App() {
             />
           </Content>
         </Layout>
-        <Footer style={{ textAlign: "center" }}>David Paley</Footer>
+        <Footer className="footer">David Paley</Footer>
       </Layout>
     </>
   );

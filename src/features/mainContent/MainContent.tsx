@@ -42,19 +42,23 @@ const MainContent = ({
           data?.apiResponse.map(({ id, title, body }) => (
             <Col
               key={id}
-              xs={{ span: 5, offset: 1 }}
+              xs={{ span: 24 }}
+              sm={{ span: 24 }}
+              md={{ span: 12 }}
               lg={{ span: 6, offset: 2 }}
             >
-              <Card
-                title={
-                  <Typography.Text className={styles.cardTitle}>
-                    {title}
-                  </Typography.Text>
-                }
-                className={styles.customCard}
-              >
-                <p>{body}</p>
-              </Card>
+              <div className={styles.cardContainer}>
+                <Card
+                  title={
+                    <Typography.Text className={styles.cardTitle}>
+                      {title}
+                    </Typography.Text>
+                  }
+                  className={styles.customCard}
+                >
+                  <p>{body}</p>
+                </Card>
+              </div>
             </Col>
           ))}
       </Row>
