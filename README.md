@@ -1,6 +1,8 @@
 # Post Cards
 
-I bootstrapped this project with [Create React App](https://github.com/facebook/create-react-app), using the [Redux](https://redux.js.org/) and [Redux Toolkit](https://redux-toolkit.js.org/) TS template.
+This project is deployed [here](https://post-cards-one.vercel.app/).
+
+I bootstrapped it with [Create React App](https://github.com/facebook/create-react-app), using the [Redux](https://redux.js.org/) and [Redux Toolkit](https://redux-toolkit.js.org/) TS template.
 
 ## Available Scripts
 
