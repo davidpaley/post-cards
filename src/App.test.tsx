@@ -4,7 +4,7 @@ import { store } from "./app/store";
 import App from "./App";
 
 test("renders react app", () => {
-  const { getByText } = render(
+  render(
     <Provider store={store}>
       <App />
     </Provider>

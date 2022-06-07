@@ -8,6 +8,8 @@ import MainContent, { PAGINATION_TEST_ID, SPIN_TEST_ID } from "./MainContent";
 const title1 =
   "sunt aut facere repellat provident occaecati excepturi optio reprehenderit";
 const title2 = "qui est esse";
+const body1 = "quia et suscipitsuscipit recusandae consequuntur expedita et cumreprehenderit molestiae ut ut quas totamnostrum rerum est autem sunt rem eveniet architecto"
+const body2 = "est rerum tempore vitaesequi sint nihil reprehenderit dolor beatae ea dolores nequefugiat blanditiis voluptate porro vel nihil molestiae ut reiciendisqui aperiam non debitis possimus qui neque nisi nulla"
 
 const mockData = {
   apiResponse: [
@@ -15,13 +17,13 @@ const mockData = {
       userId: 1,
       id: 1,
       title: title1,
-      body: "quia et suscipit\nsuscipit recusandae consequuntur expedita et cum\nreprehenderit molestiae ut ut quas totam\nnostrum rerum est autem sunt rem eveniet architecto",
+      body: body1,
     },
     {
       userId: 1,
       id: 2,
       title: title2,
-      body: "est rerum tempore vitae\nsequi sint nihil reprehenderit dolor beatae ea dolores neque\nfugiat blanditiis voluptate porro vel nihil molestiae ut reiciendis\nqui aperiam non debitis possimus qui neque nisi nulla",
+      body: body2,
     },
   ],
   total: 2,
@@ -36,6 +38,8 @@ describe("Main content component expected bahavior", () => {
     );
     expect(screen.getByText(title1)).toBeVisible();
     expect(screen.getByText(title2)).toBeVisible();
+    expect(screen.getByText(body1)).toBeInTheDocument();
+    expect(screen.getByText(body2)).toBeVisible();
     expect(screen.getByTestId(PAGINATION_TEST_ID)).toBeInTheDocument();
   });
 
